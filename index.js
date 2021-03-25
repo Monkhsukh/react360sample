@@ -28,7 +28,7 @@ export default class hello_vr extends React.Component {
 
     if (this.state.playSound) {
       AudioModule.createAudio("sza", {
-        source: asset("brokenclocks.mp3"),
+        source: asset("mixkit-dog-barking-twice-1.wav"),
         volume: 0.5,
       });
 
