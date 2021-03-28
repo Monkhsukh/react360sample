@@ -1,6 +1,8 @@
 # react360sample
 
-git clone this repo
+git init
+
+git clone https://github.com/Monkhsukh/react360sample.git
 
 npm install
 
