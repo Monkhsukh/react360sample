@@ -1,0 +1,37 @@
+[
+    {
+        "question": "What's the capital of Azerbaijan?",
+        "correct_answer": "Baku",
+        "incorrect_answers": ["Ganja", "Ulaanbaatar", "Beijing"]
+    },
+    {
+        "question": "Which of these endangered animals is native only to China?",
+        "correct_answer": "Giant panda",
+        "incorrect_answers": ["Black rhinoceros", "Asian elephant" , "Orangutan"]
+    },
+    {
+        "question": "What is the official, full name of China?",
+        "correct_answer": "People's Republic of China",
+        "incorrect_answers": ["Kingdom of China", "United States of China", "Empire of China"]
+    },
+    {
+        "question": "To the east of Azerbaijan, which body of water provides the country with its coastline?",
+        "correct_answer": "Caspian Sea",
+        "incorrect_answers": ["Black Sea", "Lake Baikal", "Baltic Sea"]
+    },
+    {
+        "question": "Before you rush out to book your trip to Azerbaijan, you'll be wanting to buy souvenirs while you are there so you'll need some money. What is the basic unit of currency in Azerbaijan?",
+        "correct_answer": "Manat",
+        "incorrect_answers": ["Dram", "Lari", "Somoni"]
+    },
+    {
+        "question": "What is the currency of Mongolia?",
+        "correct_answer": "Togrog",
+        "incorrect_answers": ["Kip", "Won", "Dong"]
+    },
+    {
+        "question": "What is the predominant religion in Mongolia?",
+        "correct_answer": "Buddhism",
+        "incorrect_answers": ["Islam", "Daoism", "Confucianism"]
+    }
+]
