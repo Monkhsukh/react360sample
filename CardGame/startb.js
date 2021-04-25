@@ -5,14 +5,12 @@ const BeginButton = ({level, onClick}) => {
     return (
         <View>
             <Text style={styles.title}>
-                Take the quiz
-            </Text>
-            <Text style={styles.level}>
-                Level {level}
+                Take the CardGame
             </Text>
             <VrButton onClick={() => onClick()} style={styles.BeginButton}>
-                <Text style={styles.text}>
-                    Begin
+                <Text
+                    style={styles.text}>
+                    Start
                 </Text>
             </VrButton>
         </View>

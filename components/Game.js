@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-360';
+import { View, StyleSheet, VrButton } from 'react-360';
 
 import Quiz from './Quiz'
 import BeginButton from './BeginButton'

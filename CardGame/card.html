@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>Filpgame</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="./card.css">
+    
+</head>
+    <style>
+		.back{
+			z-index: -1;
+			position: absolute;
+			width: 123px;
+		}
+		.btn,.newbtn{
+			margin-top: 20px;
+			width: 100px;
+			border:1px solid #fff;
+			background: red;
+			padding: 10px;
+			color: #fff;
+			cursor: pointer;
+		}
+		.all h1{
+			text-align: center;
+			padding: 20px 0;
+		}
+	</style>
+<body>
+    <div class="all">
+        <h1>Memory flop game!</h1>
+        <ul id="grid">
+			
+		</ul>
+        <button class="btn">
+            Replay the game
+        </button>
+    </div>
+	
+    <script src="card.js">
+    </script>
+</body>

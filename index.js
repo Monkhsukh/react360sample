@@ -15,6 +15,7 @@ import Sphere from "./Sphere";
 import StartButton from './components/StartButton'
 import LevelStates from './components/LevelStates'
 import Game from './components/Game'
+import Card from './CardGame/card'
 
 AppRegistry.registerComponent("Sphere", () => Sphere);
 
@@ -58,7 +59,7 @@ export default class hello_vr extends React.Component {
   }
 
   nextLevel = () => {
-    this.goLevel(this.state.level + 1)
+    this.goLevel(this.state.level+1)
   }
 
   playAgain = () => {
@@ -120,10 +121,31 @@ export default class hello_vr extends React.Component {
     return (
       <View style={styles.panel}>
         { this.state.level === 'start' && <StartButton startGame={this.startGame} /> }
-        {(this.state.level >= 1) &&
+        {(this.state.level == 1) &&
             <LevelStates level={this.state.topLevel} choose={this.goLevel}/>
         }
-        {(this.state.level >= 1) &&
+        {(this.state.level == 1) &&
+            //<Card onPassLevel={this.nextLevel}/>
+            <Game level={this.state.level} quiz={this.state.quiz} onPassLevel={this.nextLevel} onFailedLevel={this.playAgain}/>
+        }
+        {(this.state.level == 2) &&
+            <LevelStates level={this.state.topLevel} choose={this.goLevel}/>
+        }
+        {(this.state.level == 2) &&
+            //<Card onPassLevel={this.nextLevel}/>
+            <Game level={this.state.level} quiz={this.state.quiz} onPassLevel={this.nextLevel} onFailedLevel={this.playAgain}/>
+        }
+        {(this.state.level == 3) &&
+            <LevelStates level={this.state.topLevel} choose={this.goLevel}/>
+        }
+        {(this.state.level == 3) &&
+            <Card onPassLevel={this.nextLevel}/>
+            //<Game level={this.state.level} quiz={this.state.quiz} onPassLevel={this.nextLevel} onFailedLevel={this.playAgain}/>
+        }
+        {(this.state.level >= 4) &&
+            <LevelStates level={this.state.topLevel} choose={this.goLevel}/>
+        }
+        {(this.state.level >= 4) &&
             <Game level={this.state.level} quiz={this.state.quiz} onPassLevel={this.nextLevel} onFailedLevel={this.playAgain}/>
         }
         {/* {(this.state.level >= 1) &&
