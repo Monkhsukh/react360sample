@@ -22,7 +22,7 @@ function init(bundle, parent, options = {}) {
   r360.compositor.setBackground(r360.getAssetURL("Fisherman.jpg"));
 
   // 3D SPHERE
-  // r360.renderToLocation(r360.createRoot("Sphere"), r360.getDefaultLocation());
+  r360.renderToLocation(r360.createRoot("Sphere"), r360.getDefaultLocation());
 }
 
 window.React360 = { init };

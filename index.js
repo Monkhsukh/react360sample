@@ -12,123 +12,103 @@ import {
 
 import Sphere from "./Sphere";
 
-import StartButton from './components/StartButton'
-import LevelStates from './components/LevelStates'
-import Game from './components/Game'
+import StartButton from "./components/StartButton";
+import LevelStates from "./components/LevelStates";
+import QuizGame from "./components/QuizGame";
+import FindingGame from "./components/FindingGame";
+import CardGame from "./components/CardGame";
 
-AppRegistry.registerComponent("Sphere", () => Sphere);
+import Entity from "Entity";
 
 const { AudioModule } = NativeModules;
 
+AppRegistry.registerComponent("Sphere", () => Sphere);
+
 export default class hello_vr extends React.Component {
   state = {
-    show: false,
-    playSound: false,
-    level: 'start',
-    topLevel: 1,
-    quiz: []
-  };
-
-  _playSound = () => {
-    this.setState({
-      playSound: !this.state.playSound,
-    });
-
-    if (this.state.playSound) {
-      AudioModule.createAudio("sza", {
-        source: asset("mixkit-dog-barking-twice-1.wav"),
-        volume: 0.5,
-      });
-
-      AudioModule.play("sza");
-    } else {
-      AudioModule.stop("sza");
-    }
-  };
-
-  toggle = () => {
-    this.setState({ show: !this.state.show });
+    start: true,
+    level: 0,
+    quiz: [],
   };
 
   startGame = () => {
-    // this.setState({ ...this.state, level: 1})
-
-    // this.turnLevel()
-    this.goLevel(1)
-  }
+    this.setState({ start: false });
+    this.goLevel(1);
+  };
 
   nextLevel = () => {
-    this.goLevel(this.state.level + 1)
-  }
+    this.goLevel(this.state.level + 1);
+  };
 
   playAgain = () => {
-    this.goLevel(this.state.level)
-  }
+    this.goLevel(this.state.level);
+  };
 
-  goLevel = level => {
-    const topLevel = this.state.level == 'start' ? 1 : level > this.state.topLevel ? level : this.state.topLevel
-
-    this.setState({ ...this.state, level, topLevel})
-    this.turnLevel(level)
-  }
-
-  shuffle = (arr) => arr.sort(() => Math.random() - 0.5)
-
-  turnLevel = level => {
-    switch(level) {
-      case 1:
-        Environment.setBackgroundImage(
-          asset(`360_world.jpg`)
-        )
-        break
-      case 2:
-        Environment.setBackgroundImage(
-          asset(`Heros square.jpg`)
-        )
-        break
-      default:
-        Environment.setBackgroundImage(
-          asset(`Fisherman.jpg`)
-        )
-        break
-    }
-
+  loadQuiz = (level) => {
     fetch(`./static_assets/${level}.json`, {
-      credentials: 'include',
-      method: 'GET',
+      credentials: "include",
+      method: "GET",
       headers: {
-        'content-type': 'application/json'
+        "content-type": "application/json",
       },
     })
-    .then((res) => res.json())
-    .then((data) => {
-      const quiz = data.map(item => (
-        {
-            question: item.question,
-            options: this.shuffle([...item.incorrect_answers, item.correct_answer]),
-            answer: item.correct_answer
-        }
-      ))
-      this.setState({...this.state, quiz})
-    })
-    .catch((data) => {
-      console.log('failed to get data', data)
-    })
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        const quiz = data.map((item) => ({
+          question: item.question,
+          options: this.shuffle([
+            ...item.incorrect_answers,
+            item.correct_answer,
+          ]),
+          answer: item.correct_answer,
+        }));
+        this.setState({ ...this.state, quiz });
+      })
+      .catch((data) => {
+        console.log("failed to get data", data);
+      });
+  };
+
+  goLevel = (level) => {
+    this.setState({ level: level });
+
+    switch (level) {
+      case 1:
+        Environment.setBackgroundImage(asset(`az1.jpg`));
+        this.loadQuiz(level);
+        break;
+      case 2:
+        Environment.setBackgroundImage(asset(`mgl1.jpg`));
+        break;
+      default:
+        Environment.setBackgroundImage(asset(`CHN.jpg`));
+        break;
+    }
+  };
+
+  shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
 
   render() {
     return (
-      <View style={styles.panel}>
-        { this.state.level === 'start' && <StartButton startGame={this.startGame} /> }
-        {(this.state.level >= 1) &&
-            <LevelStates level={this.state.topLevel} choose={this.goLevel}/>
-        }
-        {(this.state.level >= 1) &&
-            <Game level={this.state.level} quiz={this.state.quiz} onPassLevel={this.nextLevel} onFailedLevel={this.playAgain}/>
-        }
-        {/* {(this.state.level >= 1) &&
-          <VrButton onClick={this.nextLevel}><Text style={{backgroundColor: '#eeeeee11'}}>Pass Level</Text></VrButton>
-        } */}
+      <View>
+        <View style={styles.panel}>
+          {this.state.start && <StartButton startGame={this.startGame} />}
+          {this.state.level == 1 && (
+            <LevelStates level={this.state.level} choose={this.goLevel} />
+          )}
+          {this.state.level == 1 && (
+            <QuizGame
+              level={this.state.level}
+              quiz={this.state.quiz}
+              onPassLevel={this.nextLevel}
+              onFailedLevel={this.playAgain}
+            />
+          )}
+          {this.state.level == 2 && (
+            <FindingGame onPassLevel={this.nextLevel} />
+          )}
+          {this.state.level == 3 && <CardGame onPassLevel={this.nextLevel} />}
+        </View>
       </View>
     );
   }
@@ -140,7 +120,7 @@ const styles = StyleSheet.create({
     width: 1000,
     height: 600,
     backgroundColor: "rgba(255, 255, 255, 0.2)",
-    display: 'flex',
+    display: "flex",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -155,6 +135,16 @@ const styles = StyleSheet.create({
   },
   textbox: {
     width: 400,
+  },
+  title: {
+    fontSize: 50,
+    fontWeight: "400",
+    paddingLeft: 10,
+    paddingRight: 10,
+    textAlign: "center",
+    textAlignVertical: "center",
+    borderRadius: 10,
+    fontWeight: "bold",
   },
 });
 
