@@ -17,6 +17,7 @@ import LevelStates from "./components/LevelStates";
 import QuizGame from "./components/QuizGame";
 import FindingGame from "./components/FindingGame";
 import CardGame from "./components/CardGame";
+import Card from './CardGame/card'
 
 import Entity from "Entity";
 
@@ -103,11 +104,19 @@ export default class hello_vr extends React.Component {
               onPassLevel={this.nextLevel}
               onFailedLevel={this.playAgain}
             />
+            //<Card onPassLevel={this.nextLevel}/>
           )}
+          {this.state.level == 2 && (<LevelStates level={this.state.level} choose={this.goLevel} />)}
           {this.state.level == 2 && (
             <FindingGame onPassLevel={this.nextLevel} />
           )}
-          {this.state.level == 3 && <CardGame onPassLevel={this.nextLevel} />}
+          {this.state.level == 3 && (
+            <LevelStates level={this.state.level} choose={this.goLevel} />
+          )}
+          {this.state.level == 3 && 
+            //<CardGame onPassLevel={this.nextLevel} />
+            <Card onPassLevel={this.nextLevel}/>
+          }
         </View>
       </View>
     );
