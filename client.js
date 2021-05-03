@@ -19,7 +19,7 @@ function init(bundle, parent, options = {}) {
   );
 
   // Load the initial environment
-  r360.compositor.setBackground(r360.getAssetURL("Fisherman.jpg"));
+  r360.compositor.setBackground(r360.getAssetURL("360_world.jpg"));
 
   // 3D SPHERE
   r360.renderToLocation(r360.createRoot("Sphere"), r360.getDefaultLocation());

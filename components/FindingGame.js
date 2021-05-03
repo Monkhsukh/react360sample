@@ -52,7 +52,7 @@ export default class FindingGame extends React.Component {
       <View>
         {this.state.start ? (
           <VrButton onClick={this.handleClick}>
-            <Text style={styles.title}>FInd 5 hummingbirds!</Text>
+            <Text style={styles.title}>Find 5 hummingbirds!</Text>
           </VrButton>
         ) : (
           <BeginView

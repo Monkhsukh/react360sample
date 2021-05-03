@@ -20,6 +20,7 @@ import CardGame from "./components/CardGame";
 import Card from "./CardGame/card";
 
 import Entity from "Entity";
+import WelcomeView from "./components/WelcomeView";
 
 const { AudioModule } = NativeModules;
 
@@ -75,14 +76,25 @@ export default class hello_vr extends React.Component {
 
     switch (level) {
       case 1:
-        Environment.setBackgroundImage(asset(`az1.jpg`));
         this.loadQuiz(level);
         break;
       case 2:
+        Environment.setBackgroundImage(asset(`az1.jpg`));
+        break;
+      case 3:
+        this.loadQuiz(level);
+        break;
+      case 5:
         Environment.setBackgroundImage(asset(`mgl1.jpg`));
         break;
+      case 6:
+        this.loadQuiz(level);
+        break;
+      case 8:
+        Environment.setBackgroundImage(asset(`chn1.jpg`));
+        break;
       default:
-        Environment.setBackgroundImage(asset(`CHN.jpg`));
+        // Environment.setBackgroundImage(asset(`360_world.jpg`));
         break;
     }
   };
@@ -93,31 +105,61 @@ export default class hello_vr extends React.Component {
     return (
       <View>
         <View style={styles.panel}>
-          {this.state.start && <StartButton startGame={this.startGame} />}
-          {this.state.level == 1 && (
+          {this.state.start ? (
+            <StartButton startGame={this.startGame} />
+          ) : (
             <LevelStates level={this.state.level} choose={this.goLevel} />
           )}
-          {this.state.level == 1 && (
+          {(this.state.level == 1 ||
+            this.state.level == 3 ||
+            this.state.level == 6) && (
             <QuizGame
               level={this.state.level}
               quiz={this.state.quiz}
               onPassLevel={this.nextLevel}
               onFailedLevel={this.playAgain}
             />
-            //<Card onPassLevel={this.nextLevel}/>
           )}
+
           {this.state.level == 2 && (
-            <LevelStates level={this.state.level} choose={this.goLevel} />
+            <WelcomeView
+              title="Welcome to Azerbaijan!"
+              view1="az1.jpg"
+              view2="az2.jpg"
+              view3="az3.jpg"
+              onClick={this.nextLevel}
+            />
           )}
-          {this.state.level == 2 && (
-            <FindingGame onPassLevel={this.nextLevel} />
+
+          {this.state.level == 4 && (
+            <FindingGame
+              level={this.state.level}
+              onPassLevel={this.nextLevel}
+            />
           )}
-          {this.state.level == 3 && (
-            <LevelStates level={this.state.level} choose={this.goLevel} />
+
+          {this.state.level == 5 && (
+            <WelcomeView
+              title="Welcome to Mongolia"
+              view1="mgl1.jpg"
+              view2="mgl2.jpg"
+              view3="mgl3.jpg"
+              onClick={this.nextLevel}
+            />
           )}
-          {this.state.level == 3 && (
-            //<CardGame onPassLevel={this.nextLevel} />
-            <Card onPassLevel={this.nextLevel} />
+
+          {this.state.level == 7 && (
+            <CardGame level={this.state.level} onPassLevel={this.nextLevel} />
+          )}
+
+          {this.state.level == 8 && (
+            <WelcomeView
+              title="Welcome to China"
+              view1="chn1.jpg"
+              view2="chn2.jpg"
+              view3="chn3.jpg"
+              onClick={this.nextLevel}
+            />
           )}
         </View>
       </View>

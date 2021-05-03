@@ -3,29 +3,18 @@ import { View, StyleSheet, VrButton, asset, Text } from "react-360";
 import Entity from "Entity";
 
 import BeginView from "./BeginView";
+import Card from "../CardGame/card";
 
 export default class CardGame extends React.Component {
   state = {
     start: false,
-    cards: [],
   };
 
   constructor(props) {
     super(props);
   }
 
-  componentDidMount() {
-    let mp = [];
-    [...Array(12)].map((_, i) =>
-      mp.push({
-        key: i.toString(),
-      })
-    );
-
-    this.setState({
-      cards: mp,
-    });
-  }
+  componentDidMount() {}
 
   componentDidUpdate(prevProp) {
     if (prevProp.level != this.props.level) {
@@ -51,18 +40,10 @@ export default class CardGame extends React.Component {
 
   render() {
     const { quiz, level, onPassLevel, onFailedLevel } = this.props;
-    const { cards } = this.state;
     return (
       <View>
         {this.state.start ? (
-          cards.map((obj) => (
-            <VrButton
-              // onClick={() => this.clickedObj(obj.key)}
-              key={obj.key}
-            >
-              <Text>{obj.key}</Text>
-            </VrButton>
-          ))
+          <Card onPassLevel={onPassLevel} />
         ) : (
           <BeginView
             level={level}

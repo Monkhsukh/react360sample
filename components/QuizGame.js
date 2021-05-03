@@ -44,7 +44,9 @@ export default class QuizGame extends React.Component {
           <Quiz quiz={quiz} onSuccess={this.succssed} onFailed={this.failed} />
         ) : (
           <BeginView
-            level={level}
+            level={
+              level == 1 ? "Azerbaijan" : level == 3 ? "Mongolia" : "China"
+            }
             title={"Take the quiz"}
             onClick={this.startGame}
           />

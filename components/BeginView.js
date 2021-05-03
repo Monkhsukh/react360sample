@@ -4,10 +4,8 @@ import { View, StyleSheet, Text, VrButton } from "react-360";
 const BeginView = ({ level, title, onClick }) => {
   return (
     <View>
-      <Text style={styles.title}>
-        {title} {/* Take the quiz */}
-      </Text>
-      <Text style={styles.level}>Level {level}</Text>
+      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.level}>{level}</Text>
       <VrButton onClick={() => onClick()} style={styles.BeginButton}>
         <Text style={styles.text}>Begin</Text>
       </VrButton>

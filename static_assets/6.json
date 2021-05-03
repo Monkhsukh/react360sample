@@ -1,0 +1,33 @@
+[
+    {
+        "question": "Which of these endangered animals is native only to China?",
+        "correct_answer": "Giant panda",
+        "incorrect_answers": ["Black rhinoceros", "Asian elephant" , "Orangutan"]
+    },
+    {
+        "question": "What is the official, full name of China?",
+        "correct_answer": "People's Republic of China",
+        "incorrect_answers": ["Kingdom of China", "United States of China", "Empire of China"]
+    },
+    {
+        "question": "What is the capital city of China?",
+        "correct_answer": "Beijing",
+        "incorrect_answers": ["Kathmandu", "Seoul", "Shanghai"]
+    },
+    {
+        "question": "The majority of Chinese citizens consider themselves to be?",
+        "correct_answer": "Non-religious",
+        "incorrect_answers": ["Buddhists", "Christians", "Muslims"]
+    },
+    {
+        "question": "What is the official language of China?",
+        "correct_answer": "Mandarin",
+        "incorrect_answers": ["Chinese", "Cantonese", "English"]
+    },
+    {
+        "question": "Which of these colours is unlucky in Chinese culture?",
+        "correct_answer": "White",
+        "incorrect_answers": ["Red", "Blue", "Black"]
+    }
+
+]

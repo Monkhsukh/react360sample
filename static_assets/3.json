@@ -1,0 +1,32 @@
+[
+    {
+        "question": "What is the currency of Mongolia?",
+        "correct_answer": "Togrog",
+        "incorrect_answers": ["Kip", "Won", "Dong"]
+    },
+    {
+        "question": "What is the predominant religion in Mongolia?",
+        "correct_answer": "Buddhism",
+        "incorrect_answers": ["Islam", "Daoism", "Confucianism"]
+    },
+    {
+        "question": "What is the capital of Mongolia?",
+        "correct_answer": "Ulaanbaatar",
+        "incorrect_answers": ["Bishkek", "Gobi", "Darkhan"]
+    },
+    {
+        "question": "Do you know where is Mongolia?",
+        "correct_answer": "Central Asia",
+        "incorrect_answers": ["Western Asia", "Europe", "Africa"]
+    },
+    {
+        "question": "What is Mongolian traditional clothes called?",
+        "correct_answer": "Deel",
+        "incorrect_answers": ["Kimono", "Han-bok", "Sari"]
+    },
+    {
+        "question": "What is Mongolian traditional tea?",
+        "correct_answer": "Milk tea",
+        "incorrect_answers": ["Green tea", "Black tea", "Red tea"]
+    }
+]
